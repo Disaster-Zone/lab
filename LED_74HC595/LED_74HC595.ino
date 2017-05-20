@@ -16,11 +16,15 @@ void loop() {
   delay(500);
 
   for (int i=0; i < 8; i++) {
+    leds = 0;               // Zero out the LEDs each loop
+    updateShiftRegister();  // to create a rolling LED
+    
     bitSet(leds, i);
     updateShiftRegister();
     delay(500);
   }
 }
+
 
 void updateShiftRegister() {
   digitalWrite(LATCH_PIN, LOW);
